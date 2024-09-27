@@ -1,5 +1,5 @@
 {
-  "name": "simple-webrtc",
+  "name": "simple-p2p-webrtc",
   "version": "1.0.0",
   "description": "Simple WebRTC peer-to-peer connections in both React Native and React apps.",
   "main": "./lib/index.js",
@@ -17,13 +17,13 @@
     }
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "tsc",
     "prepare": "npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["webrtc", "peer-to-peer", "react", "react-native"],
+  "author": "Hasan Aybars Ari",
+  "license": "MIT",
   "devDependencies": {
     "@testing-library/react": "^16.0.1",
     "@testing-library/react-native": "^12.7.2",

@@ -22,3 +22,5 @@ export function usePeer<T>(
     // @ts-ignore
     return usePeerF<T>(RTC_CONF, defaultWebRTCFactory, msgCallback, intervalMs);
 }
+
+export { MessageCallback };
