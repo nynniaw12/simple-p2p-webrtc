@@ -1,0 +1,44 @@
+{
+  "name": "simple-webrtc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "react-native": {
+        "types": "./lib/react-native.d.ts",
+        "default": "./lib/react-native.js"
+      },
+      "default": {
+        "types": "./lib/index.d.ts",
+        "default": "./lib/index.js"
+      }
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/react-native": "^12.7.2",
+    "@types/jest": "^29.5.13",
+    "@types/react": "^18.3.10",
+    "@types/react-dom": "^18.3.0",
+    "@types/react-native": "^0.73.0",
+    "@types/webrtc": "^0.0.43",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.6.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-native": ">=0.60.0",
+    "react-native-webrtc": ">=1.75.0"
+  }
+}
