@@ -1,7 +1,7 @@
 {
   "name": "simple-webrtc",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple WebRTC peer-to-peer connections in both React Native and React apps.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "exports": {
