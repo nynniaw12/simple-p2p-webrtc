@@ -1,18 +1,24 @@
 "use client"
 
-import PeerF, { MessageCallback, usePeerF } from "./common/peer";
+import PeerF, { MessageCallback, usePeerF, WebRTCFactory } from "./common/peer";
 
-const defaultWebRTCFactory = typeof window !== 'undefined' ? {
-    RTCPeerConnection: window.RTCPeerConnection,
-    RTCSessionDescription: window.RTCSessionDescription
-} : undefined;
+function getWebRTCFactory(): WebRTCFactory | undefined {
+    if (typeof window !== 'undefined') {
+        return {
+            RTCPeerConnection: window.RTCPeerConnection,
+            RTCSessionDescription: window.RTCSessionDescription
+        };
+    }
+    return undefined;
+}
 
 export class Peer<T> extends PeerF<T> {
     constructor(configuration: RTCConfiguration, messageCallback?: MessageCallback<T>) {
-        if (defaultWebRTCFactory != undefined) {
-            super(configuration, defaultWebRTCFactory, messageCallback);
+        const factory = getWebRTCFactory();
+        if (factory) {
+            super(configuration, factory, messageCallback);
         } else {
-            throw new Error('WebRTCFactory is undefined!. Need a client component.')
+            throw new Error('WebRTCFactory is unavailable. This class must be used on the client side.');
         }
     }
 }
@@ -22,10 +28,11 @@ export function usePeer<T>(
     msgCallback?: MessageCallback<T>,
     intervalMs = 250,
 ) {
-    if (defaultWebRTCFactory != undefined) {
-        return usePeerF<T>(RTC_CONF, defaultWebRTCFactory, msgCallback, intervalMs);
+    const factory = getWebRTCFactory();
+    if (factory) {
+        return usePeerF<T>(RTC_CONF, factory, msgCallback, intervalMs);
     } else {
-        throw new Error('WebRTCFactory is undefined!. Need a client component.')
+        throw new Error('WebRTCFactory is unavailable. This hook must be used in a client component.');
     }
 }
 
