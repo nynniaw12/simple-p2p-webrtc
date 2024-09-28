@@ -1,8 +1,8 @@
 import PeerF, { MessageCallback, usePeerF } from "./common/peer";
 
 const defaultWebRTCFactory = {
-    RTCPeerConnection: RTCPeerConnection,
-    RTCSessionDescription: RTCSessionDescription
+    RTCPeerConnection: window.RTCPeerConnection,
+    RTCSessionDescription: window.RTCSessionDescription
 }
 
 
