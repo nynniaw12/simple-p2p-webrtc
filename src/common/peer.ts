@@ -125,7 +125,7 @@ export default class PeerF<T> {
 // Wrapper around Peer
 export function usePeerF<T>(
     RTC_CONF: RTCConfiguration,
-    webRTCFactory: WebRTCFactory,
+    getWebRTCFactory: () => WebRTCFactory | undefined,
     msgCallback?: MessageCallback<T>,
     intervalMs = 250,
 ) {
@@ -134,7 +134,11 @@ export function usePeerF<T>(
 
     useEffect(() => {
         if (!peer.current) {
-            peer.current = new PeerF(RTC_CONF, webRTCFactory, msgCallback);
+            const factory = getWebRTCFactory();
+            if (!factory) {
+                throw new Error('WebRTCFactory is unavailable. This hook must be used in a client component.');
+            }
+            peer.current = new PeerF(RTC_CONF, factory, msgCallback);
         }
         return () => {
             if (peer.current) {
