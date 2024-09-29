@@ -33,7 +33,7 @@ For simplicity below example acts as a counterpart to the following application 
 It initiates the p2p connection. The offer is then provided to the next app.
 
 ```js
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Keyboard, StyleSheet, Text, TextInput, View } from 'react-native';
 import { usePeer } from 'simple-p2p-webrtc/react-native';
 
@@ -54,12 +54,12 @@ export default function App() {
     useEffect(() => {
         if (dataChannelState === "open") {
             try {
-                peer.send(JSON.stringify("PING"));
+                peer.send("PING"); // ping once connected
             } catch (e) {
                 console.log('Connection severed'); // you dont have to log errors but can handle them
             }
         }
-    }, [sensorData, dataChannelState]);
+    }, [dataChannelState]);
 
     const handleCreateOffer = async () => {
         try {
@@ -157,7 +157,7 @@ fed back to the react native app, typically this is done through a signaling ser
 ```js
 "use client" // we need to be a client component/ page
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePeer } from "simple-p2p-webrtc";
 
 const RTC_CONF = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] }; // stun servers
@@ -169,6 +169,8 @@ export default function Home() {
     const [answer, setAnswer] = useState<string>('');
     const peer = usePeer(RTC_CONF, (msg) => {
         setData(msg); // message callback
+                      // data will be ping
+                      // set once
     }, UPDATE_INTERVAL);
     const { connectionState, dataChannelState, iceCandidates } = peer;
 

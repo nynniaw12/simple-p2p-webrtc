@@ -1,6 +1,6 @@
 {
   "name": "simple-p2p-webrtc",
-  "version": "1.0.19",
+  "version": "1.1.0",
   "description": "Simple WebRTC peer-to-peer connections in both React Native and React apps.",
   "main": "./index.js",
   "module": "./index.mjs",
