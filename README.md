@@ -174,7 +174,6 @@ export default function Home() {
 
     return (
         <div className="min-h-screen w-full flex flex-col items-center justify-center bg-gray-100 p-4 text-black">
-            <h1 className="text-2xl font-bold mb-4">Juxta-Geo Control</h1>
             <p className="mb-4">Connection status: {connectionState}</p>
             <p className="mb-4">Data chan status: {dataChannelState}</p>
 
