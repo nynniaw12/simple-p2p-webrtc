@@ -1,6 +1,6 @@
 {
   "name": "simple-p2p-webrtc",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "Simple WebRTC peer-to-peer connections in both React Native and React apps.",
   "main": "./index.js",
   "module": "./index.mjs",
@@ -19,6 +19,11 @@
   ],
   "author": "Hasan Aybars Ari",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nynniaw12/simple-p2p-webrtc.git"
+  },
+  "homepage": "https://github.com/nynniaw12/simple-p2p-webrtc#readme",
   "devDependencies": {
     "@types/react": "^18.3.10",
     "@types/react-dom": "^18.3.0",
